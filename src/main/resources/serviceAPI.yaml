@@ -1,0 +1,267 @@
+swagger: "2.0"
+info:
+  title: MailPigeon API
+  description: This `API` describe all fitures of this messenger.
+  version: 1.0.0
+host: example.com
+basePath: "/"
+consumes:
+  - application/json
+produces:
+  - application/json
+schemes:
+  - https
+tags:
+  - name: "users"
+    description: "All actions with users"
+  - name: "rooms"
+    description: "All actions with rooms"
+  - name: "messages"
+    description: "All actions with messages"
+paths:
+  /users/login:
+    post:
+      tags:
+        - "users"
+      summary: "return access `token`"
+      description: "User send his username and password for login"
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: user
+          schema:
+            $ref: '#/definitions/loginedUser'
+      responses:
+        200:
+          description: this means that user logined seccesfuly
+          schema:
+            type: object
+            properties:
+              token:
+                type: string
+                example: abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890
+                description: "access token"
+        404:
+          description: this means that user send bad login or password
+
+  /users/register:
+    post:
+      tags:
+        - "users"
+      summary: "return HTTP code as result of registration"
+      description: "user send AUTH data for register himself in messenger"
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: registrationInfo
+          schema:
+            $ref: '#/definitions/registeredUser'
+      responses:
+        200:
+          description: new user register seccusfuly but not logined
+        406:
+          description: user enter wrong register data
+
+  /users:
+    patch:
+      tags:
+        - "users"
+      summary: update password of user.
+      description: user updates his password if send his old password and new with its duplicate.
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: passwords
+          schema:
+            $ref: '#/definitions/passwords'
+      responses:
+        200:
+          description: user seccessfuly change his password
+        406:
+          description: user enter wrong old password or new password and his confirms if not equals
+    post:
+      tags:
+        - "users"
+      summary: enter or exit in room
+      description: if user enter or exit the room client must send this information
+      produces:
+        - application/json
+      parameters:
+        - in: formData
+          name: token
+          type: string
+        - in: formData
+          name: roomID
+          type: string
+        - in: formData
+          name: action
+          type: string
+      responses:
+        200:
+          description: ok
+
+  /rooms:
+    get:
+      tags:
+        - "rooms"
+      summary: get info about all in all rooms
+      description: client send this request every seccond for update his information
+      produces:
+        - application/json
+      parameters:
+        - in: formData
+          name: token
+          type: string
+          description: "users access token"
+      responses:
+        200:
+          description: send all info
+          schema:
+            $ref: "#/definitions/infoArray"
+    post:
+      tags:
+        - "rooms"
+      summary: "create room`"
+      description: "rooms is abstract subject where users can talk"
+      produces:
+        - application/json
+      parameters:
+        - in: formData
+          name: token
+          type: string
+        - in: body
+          name: roomInfo
+          schema:
+            $ref: '#/definitions/room'
+      responses:
+        200:
+          description: room create seccessful
+
+  /message:
+    post:
+      tags:
+        - "messages"
+      summary: "send message"
+      description: user send his message to somme room
+      produces:
+        - application/json
+      parameters:
+        - in: formData
+          name: roomID
+          type: string
+        - in: body
+          name: message
+          schema:
+            $ref: '#/definitions/message'
+
+      responses:
+        200:
+          description: messages taked
+
+definitions:
+  infoArray:
+    type: array
+    items:
+      type: object
+      properties:
+        roomId:
+          type: integer
+          example: 2
+          description: id of room
+        usersInfo:
+          type: array
+          items:
+            $ref: '#/definitions/userInfo'
+        messageInfo:
+          type: array
+          items:
+            type: object
+            properties:
+              newMessage:
+                type: array
+                items:
+                  $ref: '#/definitions/message'
+        newRooms:
+          type: array
+          items:
+            type: object
+            properties:
+              senderUsername:
+                type: string
+                description: user name of sender
+
+  loginedUser:
+    type: object
+    properties:
+      login:
+        type: string
+        description: login of user
+      password:
+        type: string
+        description: password of current user in hash
+
+  registeredUser:
+    type: object
+    properties:
+      login:
+        type: string
+      username:
+        type: string
+      password:
+        type: string
+      confirmPassword:
+        type: string
+
+  passwords:
+    type: object
+    properties:
+      oldPAssword:
+        type: string
+      newPAssword:
+        type: string
+      confNewPassword:
+        type: string
+
+  userInfo:
+    type: object
+    properties:
+      online:
+        type: string
+        description: time of last onlie user in `unix time`
+      userName:
+        type: string
+      vizitedRoom:
+        type: boolean
+
+  message:
+    type: object
+    properties:
+      messageType:
+        type: string
+        enum: [text, file]
+      messageData:
+        type: string
+      sendedTime:
+        type: string
+      userTo:
+        type: string
+      targetRoom:
+        type: string
+  room:
+    type: object
+    properties:
+      roomName:
+        type: string
+        description: name of the created room
+      usernes:
+        type: array
+        items:
+          type: string
+
+
+
+
+
