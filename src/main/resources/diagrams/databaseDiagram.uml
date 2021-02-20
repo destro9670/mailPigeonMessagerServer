@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement />
+  <nodes>
+    <node x="387.75" y="0.0">ua.destro967.mailPigeon.models.BaseEntity</node>
+    <node x="452.0" y="136.0">ua.destro967.mailPigeon.models.User</node>
+    <node x="156.0" y="202.0">ua.destro967.mailPigeon.models.Room</node>
+    <node x="304.0" y="213.0">ua.destro967.mailPigeon.models.UserInRoom</node>
+    <node x="639.0" y="213.0">ua.destro967.mailPigeon.models.Role</node>
+    <node x="779.0" y="169.0">ua.destro967.mailPigeon.models.Message</node>
+    <node x="0.0" y="213.0">ua.destro967.mailPigeon.models.UserHasRole</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="ua.destro967.mailPigeon.models.Room" target="ua.destro967.mailPigeon.models.BaseEntity">
+      <point x="0.0" y="-60.0" />
+      <point x="220.0" y="106.0" />
+      <point x="419.75" y="106.0" />
+      <point x="-32.0" y="38.0" />
+    </edge>
+    <edge source="ua.destro967.mailPigeon.models.UserHasRole" target="ua.destro967.mailPigeon.models.BaseEntity">
+      <point x="0.0" y="-49.0" />
+      <point x="68.0" y="96.0" />
+      <point x="398.4166666666667" y="96.0" />
+      <point x="-53.333333333333314" y="38.0" />
+    </edge>
+    <edge source="ua.destro967.mailPigeon.models.Message" target="ua.destro967.mailPigeon.models.BaseEntity">
+      <point x="0.0" y="-93.0" />
+      <point x="831.0" y="96.0" />
+      <point x="505.0833333333333" y="96.0" />
+      <point x="53.333333333333314" y="38.0" />
+    </edge>
+    <edge source="ua.destro967.mailPigeon.models.Role" target="ua.destro967.mailPigeon.models.BaseEntity">
+      <point x="0.0" y="-49.0" />
+      <point x="699.0" y="106.0" />
+      <point x="483.75" y="106.0" />
+      <point x="32.0" y="38.0" />
+    </edge>
+    <edge source="ua.destro967.mailPigeon.models.UserInRoom" target="ua.destro967.mailPigeon.models.BaseEntity">
+      <point x="0.0" y="-49.0" />
+      <point x="368.0" y="116.0" />
+      <point x="441.0833333333333" y="116.0" />
+      <point x="-10.666666666666686" y="38.0" />
+    </edge>
+    <edge source="ua.destro967.mailPigeon.models.User" target="ua.destro967.mailPigeon.models.BaseEntity">
+      <point x="0.0" y="-126.0" />
+      <point x="535.5" y="116.0" />
+      <point x="462.41666666666663" y="116.0" />
+      <point x="10.666666666666657" y="38.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="353.0" y="277.0" />
+  <SelectedNodes>
+    <node>ua.destro967.mailPigeon.models.User</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Properties</Category>
+    <Category>Inner Classes</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

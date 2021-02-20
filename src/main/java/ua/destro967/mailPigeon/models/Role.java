@@ -1,36 +1,34 @@
 package ua.destro967.mailPigeon.models;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.AllArgsConstructor;
 import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.List;
 
+@Entity
+@Table(name = "roles")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
-@Table(name = "rooms")
-public class Room extends BaseEntity {
+public class Role extends BaseEntity {
+
     @Id
-    @SequenceGenerator(name = "room_seq", sequenceName = "user_id_seq", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_seq")
+    @SequenceGenerator(name = "role_seq", sequenceName = "role_id_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "role_seq")
     private long id;
 
-    @Column(name ="name", nullable = false)
+    @Column(name = "name", nullable = false)
     private String name;
 
-    @ManyToMany(mappedBy = "rooms")
+    @ManyToMany(mappedBy = "roles", fetch = FetchType.EAGER)
     private List<User> users;
-
-    @OneToOne(mappedBy = "room")
-    private Message message;
 
     @Override
     public String toString() {
-        return "Room{" +
+        return "Role{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 '}';

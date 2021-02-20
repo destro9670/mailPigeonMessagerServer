@@ -3,19 +3,21 @@ package ua.destro967.mailPigeon.models;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
+import java.util.Arrays;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
 @Table(name = "messages")
-public class Message {
+public class Message extends BaseEntity {
     @Id
     @SequenceGenerator(name = "message_seq", sequenceName = "messages_id_seq", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.AUTO, generator = "message_seq")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "message_seq")
     private long id;
 
     @Column(name = "type", nullable = false)
@@ -25,14 +27,11 @@ public class Message {
     @Column(name = "data", nullable = false)
     private byte[] data;
 
-    @Column(name = "read_sratus", nullable = false)
+    @Column(name = "read_status", nullable = false)
     private boolean isRead;
 
     @Column(name = "send_status", nullable = false)
     private boolean isSend;
-
-    @Column(name = "send_date", nullable = false)
-    private java.sql.Timestamp sendDate;
 
     @ManyToOne
     @JoinColumn(name = "sender_id", nullable = false)
@@ -42,4 +41,16 @@ public class Message {
     @JoinColumn(name = "target_room_id", referencedColumnName = "id")
     private Room room;
 
+    @Override
+    public String toString() {
+        return "Message{" +
+                "id=" + id +
+                ", typeId=" + typeId +
+                ", data=" + Arrays.toString(data) +
+                ", isRead=" + isRead +
+                ", isSend=" + isSend +
+                ", user=" + user.getUsername() +
+                ", room=" + room.getName() +
+                '}';
+    }
 }

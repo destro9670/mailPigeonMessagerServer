@@ -11,8 +11,9 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "users_in_rooms")
-public class UserInRoom extends BaseEntity {
+@Table(name = "users_has_roles")
+public class UserHasRole extends BaseEntity{
+
     @Id
     @SequenceGenerator(name = "users_in_rooms_seq", sequenceName = "users_in_rooms_id_seq", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "users_in_rooms_seq")
@@ -22,9 +23,9 @@ public class UserInRoom extends BaseEntity {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    @ManyToOne(targetEntity = Room.class)
-    @JoinColumn(name = "room_id", nullable = false)
-    private Room room;
-
-
+    @ManyToOne(targetEntity = Role.class)
+    @JoinColumn(name = "role_id", nullable = false)
+    private Role role;
 }
+
+
