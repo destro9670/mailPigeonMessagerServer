@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import ua.destro967.mailPigeon.dto.AdminUserDto;
-import ua.destro967.mailPigeon.dto.UserDto;
 import ua.destro967.mailPigeon.models.User;
 import ua.destro967.mailPigeon.services.UserService;
 

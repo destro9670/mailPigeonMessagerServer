@@ -3,11 +3,10 @@ package ua.destro967.mailPigeon.models;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
+
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
-import java.util.Arrays;
 import java.util.UUID;
 
 @Data

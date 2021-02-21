@@ -3,7 +3,6 @@ package ua.destro967.mailPigeon.models;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
-import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.List;

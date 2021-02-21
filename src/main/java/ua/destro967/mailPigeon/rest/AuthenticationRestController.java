@@ -17,7 +17,6 @@ import ua.destro967.mailPigeon.models.User;
 import ua.destro967.mailPigeon.security.jwt.JwtTokenProvider;
 import ua.destro967.mailPigeon.services.UserService;
 
-import javax.print.attribute.standard.PresentationDirection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -72,13 +71,13 @@ public class AuthenticationRestController {
             String password = requestDto.getPassword();
 
             if (!password.equals(requestDto.getConfirmPassword())) {
-                throw new IllegalArgumentException("User  with username: " + username + "enter \'password\' and \'confirmPassword\' do not match");
+                throw new IllegalArgumentException("User  with username: " + username + "enter 'password' and 'confirmPassword' do not match");
             }
 
             String firstName = requestDto.getFirstName();
 
             if (firstName == null || firstName.equals("")) {
-                throw new IllegalArgumentException("User  with username: " + username + "send empty field \'firstName\'");
+                throw new IllegalArgumentException("User  with username: " + username + "send empty field 'firstName'");
             }
 
             User user = new User();
