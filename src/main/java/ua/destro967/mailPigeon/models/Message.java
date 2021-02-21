@@ -46,7 +46,6 @@ public class Message extends BaseEntity {
         return "Message{" +
                 "id=" + id +
                 ", typeId=" + typeId +
-                ", data=" + Arrays.toString(data) +
                 ", isRead=" + isRead +
                 ", isSend=" + isSend +
                 ", user=" + user.getUsername() +

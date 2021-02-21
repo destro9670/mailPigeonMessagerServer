@@ -41,21 +41,21 @@ public class UserServiceImpl implements UserService {
 
         User registeredUser = userRepository.save(user);
 
-        log.info("IN register - user: {} successfully registered", registeredUser);
+        log.info("IN UserServiceImpl.register - user: {} successfully registered", registeredUser);
         return registeredUser;
     }
 
     @Override
     public List<User> getAll() {
         List<User> result = userRepository.findAll();
-        log.info("IN getAll - {] users found", result.size());
+        log.info("IN UserServiceImpl.getAll - {} users found", result.size());
         return result;
     }
 
     @Override
     public User findByUsername(String userName) {
         User result = userRepository.findByUsername(userName);
-        log.info("IN findByUserName - user: {} found by username: {}", result, userName);
+        log.info("IN UserServiceImpl.findByUserName - user: {} found by username: {}", result, userName);
         return result;
     }
 
@@ -63,18 +63,18 @@ public class UserServiceImpl implements UserService {
     public User findById(Long id) {
         User result = userRepository.findById(id).orElse(null);
 
-        if(result == null){
-            log.warn("IN findById - no userfound by id: {}", id);
+        if (result == null) {
+            log.warn("IN UserServiceImpl.findById - no user found by id: {}", id);
             return null;
         }
 
-        log.info("IN findById - user: {} found by id: {}", result, id);
+        log.info("IN UserServiceImpl.findById - user: {} found by id: {}", result, id);
         return result;
     }
 
     @Override
     public void delete(Long id) {
         userRepository.deleteById(id);
-        log.info("IN delete - user with id: {} successfully deleted", id);
+        log.info("IN UserServiceImpl.delete - user with id: {} successfully deleted", id);
     }
 }

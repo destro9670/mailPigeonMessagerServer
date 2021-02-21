@@ -37,20 +37,20 @@ public class JwtUser implements UserDetails {
     }
 
     @JsonIgnore
-    public Long getId(){
+    public Long getId() {
         return id;
     }
 
     @Override
-    public String getUsername(){
+    public String getUsername() {
         return username;
     }
 
-    public String getFirstName(){
+    public String getFirstName() {
         return firstName;
     }
 
-    public String getLastName(){
+    public String getLastName() {
         return lastName;
     }
 
@@ -88,7 +88,7 @@ public class JwtUser implements UserDetails {
     }
 
     @JsonIgnore
-    public Date getLastPasswordResetData(){
+    public Date getLastPasswordResetData() {
         return lastPasswordResetData;
     }
 }

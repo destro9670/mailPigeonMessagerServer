@@ -35,7 +35,7 @@ public class User extends BaseEntity {
     private boolean isOnline;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "status",nullable = false)
+    @Column(name = "status", nullable = false)
     private Status status;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "id")
@@ -52,7 +52,7 @@ public class User extends BaseEntity {
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "users_has_roles",
-            joinColumns = {@JoinColumn(name = "user_id",referencedColumnName = "id")},
+            joinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "id")},
             inverseJoinColumns = {@JoinColumn(name = "role_id", referencedColumnName = "id")})
     private List<Role> roles;
 
@@ -61,7 +61,6 @@ public class User extends BaseEntity {
         return "User{" +
                 "id=" + id +
                 ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", isOnline=" + isOnline +

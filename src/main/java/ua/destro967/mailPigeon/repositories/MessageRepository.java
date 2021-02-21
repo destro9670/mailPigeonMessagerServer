@@ -5,5 +5,5 @@ import org.springframework.stereotype.Repository;
 import ua.destro967.mailPigeon.models.Message;
 
 @Repository
-public interface MessageRepository extends JpaRepository<Message,Long> {
+public interface MessageRepository extends JpaRepository<Message, Long> {
 }

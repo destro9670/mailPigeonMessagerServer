@@ -4,7 +4,7 @@ info:
   description: This `API` describe all fitures of this messenger.
   version: 1.0.0
 host: example.com
-basePath: "/"
+basePath: "/api/v1/"
 consumes:
   - application/json
 produces:
@@ -260,8 +260,3 @@ definitions:
         type: array
         items:
           type: string
-
-
-
-
-

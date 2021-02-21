@@ -12,7 +12,7 @@ public class UserDto {
     private String firstName;
     private String lastName;
 
-    public User toUser(){
+    public User toUser() {
         User user = new User();
         user.setId(id);
         user.setUsername(username);
@@ -22,7 +22,7 @@ public class UserDto {
         return user;
     }
 
-    public static UserDto fromUser(User user){
+    public static UserDto fromUser(User user) {
         UserDto userDto = new UserDto();
         userDto.setId(user.getId());
         userDto.setUsername(user.getUsername());

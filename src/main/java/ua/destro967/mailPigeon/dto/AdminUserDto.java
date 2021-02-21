@@ -14,7 +14,7 @@ public class AdminUserDto {
     private String lastName;
     private String status;
 
-    public User toUser(){
+    public User toUser() {
         User user = new User();
         user.setId(id);
         user.setUsername(username);
@@ -24,7 +24,7 @@ public class AdminUserDto {
         return user;
     }
 
-    public static AdminUserDto fromUser(User user){
+    public static AdminUserDto fromUser(User user) {
         AdminUserDto adminUserDto = new AdminUserDto();
         adminUserDto.setId(user.getId());
         adminUserDto.setUsername(user.getUsername());

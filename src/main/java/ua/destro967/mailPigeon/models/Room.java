@@ -19,7 +19,7 @@ public class Room extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_seq")
     private long id;
 
-    @Column(name ="name", nullable = false)
+    @Column(name = "name", nullable = false)
     private String name;
 
     @ManyToMany(mappedBy = "rooms")
@@ -33,6 +33,7 @@ public class Room extends BaseEntity {
         return "Room{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", users='" + users.toString() + '\'' +
                 '}';
     }
 }
