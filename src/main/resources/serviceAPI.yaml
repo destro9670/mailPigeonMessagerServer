@@ -19,7 +19,7 @@ tags:
   - name: "messages"
     description: "All actions with messages"
 paths:
-  /users/login:
+  /auth:
     post:
       tags:
         - "users"
@@ -45,7 +45,7 @@ paths:
         404:
           description: this means that user send bad login or password
 
-  /users/register:
+  /register:
     post:
       tags:
         - "users"
@@ -206,13 +206,15 @@ definitions:
   registeredUser:
     type: object
     properties:
-      login:
-        type: string
       username:
         type: string
       password:
         type: string
       confirmPassword:
+        type: string
+      firstName:
+        type: string
+      lastName:
         type: string
 
   passwords:

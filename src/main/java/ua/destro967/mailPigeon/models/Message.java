@@ -8,6 +8,7 @@ import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.util.Arrays;
+import java.util.UUID;
 
 @Data
 @NoArgsConstructor
@@ -20,8 +21,12 @@ public class Message extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "message_seq")
     private long id;
 
+    @Column(unique = true, name = "uuid", nullable = false)
+    private String uuid = UUID.randomUUID().toString().toUpperCase();
+
+    @Enumerated(EnumType.STRING)
     @Column(name = "type", nullable = false)
-    private short typeId;
+    private MessageType typeId;
 
     @Type(type = "org.hibernate.type.BinaryType")
     @Column(name = "data", nullable = false)

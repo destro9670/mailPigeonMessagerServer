@@ -12,15 +12,17 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import ua.destro967.mailPigeon.dto.AuthenticationRequestDto;
+import ua.destro967.mailPigeon.dto.RegistrationRequestDto;
 import ua.destro967.mailPigeon.models.User;
 import ua.destro967.mailPigeon.security.jwt.JwtTokenProvider;
 import ua.destro967.mailPigeon.services.UserService;
 
+import javax.print.attribute.standard.PresentationDirection;
 import java.util.HashMap;
 import java.util.Map;
 
 @RestController
-@RequestMapping(value = "/api/v1/auth/")
+@RequestMapping(value = "/api/v1/")
 public class AuthenticationRestController {
     private final AuthenticationManager authenticationManager;
 
@@ -35,7 +37,7 @@ public class AuthenticationRestController {
         this.userService = userService;
     }
 
-    @PostMapping("/login")
+    @PostMapping("/auth")
     public ResponseEntity login(@RequestBody AuthenticationRequestDto requestDto) {
         try {
             String username = requestDto.getUsername();
@@ -55,6 +57,44 @@ public class AuthenticationRestController {
             return ResponseEntity.ok(response);
         } catch (AuthenticationException e) {
             throw new BadCredentialsException("Invalid username or password");
+        }
+    }
+
+    @PostMapping("/register")
+    public ResponseEntity register(@RequestBody RegistrationRequestDto requestDto) {
+        try {
+            String username = requestDto.getUsername();
+
+            if (userService.findByUsername(username) != null) {
+                throw new IllegalArgumentException("User with username: " + username + "already exist");
+            }
+
+            String password = requestDto.getPassword();
+
+            if (!password.equals(requestDto.getConfirmPassword())) {
+                throw new IllegalArgumentException("User  with username: " + username + "enter \'password\' and \'confirmPassword\' do not match");
+            }
+
+            String firstName = requestDto.getFirstName();
+
+            if (firstName == null || firstName.equals("")) {
+                throw new IllegalArgumentException("User  with username: " + username + "send empty field \'firstName\'");
+            }
+
+            User user = new User();
+            user.setPassword(password);
+            user.setUsername(username);
+            user.setFirstName(firstName);
+
+            String lastName = requestDto.getLastName();
+            if (!(lastName == null || lastName.equals(""))) {
+                user.setLastName(lastName);
+            }
+
+            userService.register(user);
+            return ResponseEntity.ok().build();
+        } catch (IllegalArgumentException e) {
+            throw new BadCredentialsException("Invalid input data");
         }
     }
 }
