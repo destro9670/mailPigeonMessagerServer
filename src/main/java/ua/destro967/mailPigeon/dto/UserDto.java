@@ -16,8 +16,6 @@ public class UserDto {
         User user = new User();
         user.setId(id);
         user.setUsername(username);
-        user.setFirstName(firstName);
-        user.setLastName(lastName);
 
         return user;
     }
@@ -26,8 +24,6 @@ public class UserDto {
         UserDto userDto = new UserDto();
         userDto.setId(user.getId());
         userDto.setUsername(user.getUsername());
-        userDto.setFirstName(user.getFirstName());
-        userDto.setLastName(user.getLastName());
 
         return userDto;
     }

@@ -3,60 +3,161 @@
   <ID>JAVA</ID>
   <OriginalElement />
   <nodes>
-    <node x="387.75" y="0.0">ua.destro967.mailPigeon.models.BaseEntity</node>
-    <node x="452.0" y="136.0">ua.destro967.mailPigeon.models.User</node>
-    <node x="156.0" y="202.0">ua.destro967.mailPigeon.models.Room</node>
-    <node x="304.0" y="213.0">ua.destro967.mailPigeon.models.UserInRoom</node>
-    <node x="639.0" y="213.0">ua.destro967.mailPigeon.models.Role</node>
-    <node x="779.0" y="169.0">ua.destro967.mailPigeon.models.Message</node>
-    <node x="0.0" y="213.0">ua.destro967.mailPigeon.models.UserHasRole</node>
+    <node x="131.28526234567903" y="0.0">ua.destro967.mailPigeon.models.BaseEntity</node>
+    <node x="182.09081790123452" y="606.0">ua.destro967.mailPigeon.models.User</node>
+    <node x="266.5908179012345" y="147.0">ua.destro967.mailPigeon.models.MessageType</node>
+    <node x="422.5908179012345" y="136.0">ua.destro967.mailPigeon.models.Room</node>
+    <node x="436.8927469135802" y="908.0">ua.destro967.mailPigeon.models.UserInRoom</node>
+    <node x="157.65262345679002" y="383.0">ua.destro967.mailPigeon.models.Status</node>
+    <node x="16.652623456790025" y="383.0">ua.destro967.mailPigeon.models.Role</node>
+    <node x="273.65262345679" y="328.0">ua.destro967.mailPigeon.models.Message</node>
+    <node x="0.0" y="908.0">ua.destro967.mailPigeon.models.UserHasRole</node>
   </nodes>
   <notes />
   <edges>
+    <edge source="ua.destro967.mailPigeon.models.Message" target="ua.destro967.mailPigeon.models.Room">
+      <point x="17.5" y="-104.0" />
+      <point x="361.15262345679" y="298.0" />
+      <point x="433.2574845679012" y="298.0" />
+      <point x="-53.333333333333314" y="71.0" />
+    </edge>
+    <edge source="ua.destro967.mailPigeon.models.UserHasRole" target="ua.destro967.mailPigeon.models.Role">
+      <point x="0.0" y="-49.0" />
+      <point x="68.0" y="888.0" />
+      <point x="60.590817901234516" y="888.0" />
+      <point x="60.590817901234516" y="586.0" />
+      <point x="61.652623456790025" y="586.0" />
+      <point x="-15.0" y="49.0" />
+    </edge>
+    <edge source="ua.destro967.mailPigeon.models.User" target="ua.destro967.mailPigeon.models.Role">
+      <point x="-73.0625" y="-126.0" />
+      <point x="192.52831790123452" y="586.0" />
+      <point x="91.65262345679002" y="586.0" />
+      <point x="15.0" y="49.0" />
+    </edge>
+    <edge source="ua.destro967.mailPigeon.models.UserInRoom" target="ua.destro967.mailPigeon.models.User">
+      <point x="-51.19999999999999" y="-49.0" />
+      <point x="449.6927469135802" y="888.0" />
+      <point x="286.4658179012345" y="888.0" />
+      <point x="20.875" y="126.0" />
+    </edge>
+    <edge source="ua.destro967.mailPigeon.models.Room" target="ua.destro967.mailPigeon.models.Message">
+      <point x="-32.0" y="71.0" />
+      <point x="454.5908179012345" y="308.0" />
+      <point x="396.15262345679" y="308.0" />
+      <point x="52.5" y="-104.0" />
+    </edge>
+    <edge source="ua.destro967.mailPigeon.models.Message" target="ua.destro967.mailPigeon.models.MessageType">
+      <point x="-17.5" y="-104.0" />
+      <point x="326.15262345679" y="308.0" />
+      <point x="334.5908179012345" y="308.0" />
+      <point x="0.0" y="60.0" />
+    </edge>
     <edge source="ua.destro967.mailPigeon.models.Room" target="ua.destro967.mailPigeon.models.BaseEntity">
-      <point x="0.0" y="-60.0" />
-      <point x="220.0" y="106.0" />
-      <point x="419.75" y="106.0" />
-      <point x="-32.0" y="38.0" />
+      <point x="0.0" y="-71.0" />
+      <point x="486.5908179012345" y="106.0" />
+      <point x="227.28526234567903" y="106.0" />
+      <point x="32.0" y="38.0" />
+    </edge>
+    <edge source="ua.destro967.mailPigeon.models.User" target="ua.destro967.mailPigeon.models.Message">
+      <point x="10.4375" y="-126.0" />
+      <point x="276.0283179012345" y="556.0" />
+      <point x="308.65262345679" y="556.0" />
+      <point x="-35.0" y="104.0" />
+    </edge>
+    <edge source="ua.destro967.mailPigeon.models.UserHasRole" target="ua.destro967.mailPigeon.models.User">
+      <point x="27.19999999999999" y="-49.0" />
+      <point x="95.19999999999999" y="878.0" />
+      <point x="202.96581790123452" y="878.0" />
+      <point x="-62.625" y="126.0" />
+    </edge>
+    <edge source="ua.destro967.mailPigeon.models.Room" target="ua.destro967.mailPigeon.models.User">
+      <point x="10.666666666666629" y="71.0" />
+      <point x="497.25748456790114" y="308.0" />
+      <point x="502.42415123456783" y="308.0" />
+      <point x="502.42415123456783" y="586.0" />
+      <point x="338.6533179012345" y="586.0" />
+      <point x="73.0625" y="-126.0" />
+    </edge>
+    <edge source="ua.destro967.mailPigeon.models.User" target="ua.destro967.mailPigeon.models.Status">
+      <point x="-10.4375" y="-126.0" />
+      <point x="255.15331790123452" y="556.0" />
+      <point x="205.65262345679002" y="556.0" />
+      <point x="0.0" y="49.0" />
     </edge>
     <edge source="ua.destro967.mailPigeon.models.UserHasRole" target="ua.destro967.mailPigeon.models.BaseEntity">
-      <point x="0.0" y="-49.0" />
-      <point x="68.0" y="96.0" />
-      <point x="398.4166666666667" y="96.0" />
+      <point x="-54.39999999999998" y="-49.0" />
+      <point x="13.600000000000023" y="888.0" />
+      <point x="6.152623456790025" y="888.0" />
+      <point x="6.152623456790025" y="96.0" />
+      <point x="141.95192901234572" y="96.0" />
       <point x="-53.333333333333314" y="38.0" />
     </edge>
     <edge source="ua.destro967.mailPigeon.models.Message" target="ua.destro967.mailPigeon.models.BaseEntity">
-      <point x="0.0" y="-93.0" />
-      <point x="831.0" y="96.0" />
-      <point x="505.0833333333333" y="96.0" />
-      <point x="53.333333333333314" y="38.0" />
+      <point x="-52.5" y="-104.0" />
+      <point x="291.15262345679" y="308.0" />
+      <point x="237.57608024691353" y="308.0" />
+      <point x="237.57608024691353" y="116.0" />
+      <point x="205.95192901234566" y="116.0" />
+      <point x="10.666666666666629" y="38.0" />
+    </edge>
+    <edge source="ua.destro967.mailPigeon.models.Message" target="ua.destro967.mailPigeon.models.User">
+      <point x="35.0" y="104.0" />
+      <point x="378.65262345679" y="566.0" />
+      <point x="296.9033179012345" y="566.0" />
+      <point x="31.3125" y="-126.0" />
+    </edge>
+    <edge source="ua.destro967.mailPigeon.models.Role" target="ua.destro967.mailPigeon.models.User">
+      <point x="45.0" y="49.0" />
+      <point x="121.65262345679002" y="576.0" />
+      <point x="213.40331790123452" y="576.0" />
+      <point x="-52.1875" y="-126.0" />
     </edge>
     <edge source="ua.destro967.mailPigeon.models.Role" target="ua.destro967.mailPigeon.models.BaseEntity">
       <point x="0.0" y="-49.0" />
-      <point x="699.0" y="106.0" />
-      <point x="483.75" y="106.0" />
-      <point x="32.0" y="38.0" />
+      <point x="76.65262345679002" y="106.0" />
+      <point x="163.28526234567903" y="106.0" />
+      <point x="-32.0" y="38.0" />
     </edge>
     <edge source="ua.destro967.mailPigeon.models.UserInRoom" target="ua.destro967.mailPigeon.models.BaseEntity">
+      <point x="51.19999999999999" y="-49.0" />
+      <point x="552.0927469135802" y="888.0" />
+      <point x="561.0908179012345" y="888.0" />
+      <point x="561.0908179012345" y="96.0" />
+      <point x="248.61859567901234" y="96.0" />
+      <point x="53.333333333333314" y="38.0" />
+    </edge>
+    <edge source="ua.destro967.mailPigeon.models.UserInRoom" target="ua.destro967.mailPigeon.models.Room">
       <point x="0.0" y="-49.0" />
-      <point x="368.0" y="116.0" />
-      <point x="441.0833333333333" y="116.0" />
-      <point x="-10.666666666666686" y="38.0" />
+      <point x="500.8927469135802" y="888.0" />
+      <point x="516.3901234567902" y="888.0" />
+      <point x="516.3901234567902" y="308.0" />
+      <point x="518.5908179012345" y="308.0" />
+      <point x="32.0" y="71.0" />
     </edge>
     <edge source="ua.destro967.mailPigeon.models.User" target="ua.destro967.mailPigeon.models.BaseEntity">
-      <point x="0.0" y="-126.0" />
-      <point x="535.5" y="116.0" />
-      <point x="462.41666666666663" y="116.0" />
-      <point x="10.666666666666657" y="38.0" />
+      <point x="-31.3125" y="-126.0" />
+      <point x="234.27831790123452" y="566.0" />
+      <point x="147.15262345679002" y="566.0" />
+      <point x="147.15262345679002" y="116.0" />
+      <point x="184.61859567901234" y="116.0" />
+      <point x="-10.666666666666686" y="38.0" />
+    </edge>
+    <edge source="ua.destro967.mailPigeon.models.User" target="ua.destro967.mailPigeon.models.Room">
+      <point x="52.1875" y="-126.0" />
+      <point x="317.7783179012345" y="576.0" />
+      <point x="491.42415123456783" y="576.0" />
+      <point x="491.42415123456783" y="308.0" />
+      <point x="475.92415123456783" y="308.0" />
+      <point x="-10.666666666666686" y="71.0" />
     </edge>
   </edges>
-  <settings layout="Hierarchic Group" zoom="1.0" x="353.0" y="277.0" />
-  <SelectedNodes>
-    <node>ua.destro967.mailPigeon.models.User</node>
-  </SelectedNodes>
+  <settings layout="Hierarchic Group" zoom="0.6807157057654076" x="197.0000000000001" y="493.00000000000006" />
+  <SelectedNodes />
   <Categories>
     <Category>Properties</Category>
     <Category>Inner Classes</Category>
+    <Category>Fields</Category>
   </Categories>
   <SCOPE>All</SCOPE>
   <VISIBILITY>private</VISIBILITY>

@@ -18,14 +18,24 @@ create sequence users_id_seq
 create table users(
     id              bigint primary key  default nextval('users_id_seq'),
     username        varchar(20) not null ,
-    first_name      varchar(30) not null ,
-    last_name       varchar(40),
     password        varchar(255) not null ,
     is_online       bool                default false,
     last_seen       timestamp           default current_timestamp,
     status          varchar(40) not null,
     created         timestamp           default current_timestamp,
     updated         timestamp           default current_timestamp
+);
+
+create sequence tokens_id_seq
+    increment 1
+    start 1
+    no cycle;
+
+create table tokens(
+    id          bigint primary key default nextval('tokens_id_seq'),
+    access      varchar(255) not null,
+    refresh     varchar(255) not null,
+    user_id     bigint references users(id) not null
 );
 
 create sequence users_has_roles_id_seq

@@ -18,8 +18,6 @@ public class AdminUserDto {
         User user = new User();
         user.setId(id);
         user.setUsername(username);
-        user.setFirstName(firstName);
-        user.setLastName(lastName);
         user.setStatus(Status.valueOf(status));
         return user;
     }
@@ -28,8 +26,6 @@ public class AdminUserDto {
         AdminUserDto adminUserDto = new AdminUserDto();
         adminUserDto.setId(user.getId());
         adminUserDto.setUsername(user.getUsername());
-        adminUserDto.setFirstName(user.getFirstName());
-        adminUserDto.setLastName(user.getLastName());
         adminUserDto.setStatus(user.getStatus().name());
         return adminUserDto;
     }
