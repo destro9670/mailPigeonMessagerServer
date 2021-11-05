@@ -24,7 +24,6 @@ import java.util.Random;
 
 @RestController
 @RequestMapping(value = "/api/v1/")
-@CrossOrigin(origins = {"http://localhost:3000"})
 public class AuthenticationRestController {
 
     private final AuthenticationManager authenticationManager;

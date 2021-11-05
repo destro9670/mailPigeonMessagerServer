@@ -28,12 +28,6 @@ public class JwtTokenFilter extends GenericFilterBean {
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         String token = jwtTokenProvider.resolveToken((HttpServletRequest) servletRequest);
 
-    /*    if (((HttpServletRequest) servletRequest).getRequestURI().contains(LOGIN_ENDPOINT)||
-                ((HttpServletRequest) servletRequest).getRequestURI().contains(REGISTER_ENDPOINT)||
-                ((HttpServletRequest) servletRequest).getRequestURI().contains(REFRESH_ENDPOINT)){
-
-        }else
-*/
             if (token != null && jwtTokenProvider.validateToken(token)) {
                 Authentication authentication = jwtTokenProvider.getAuthentication(token);
 
@@ -42,16 +36,5 @@ public class JwtTokenFilter extends GenericFilterBean {
                 }
             }
             filterChain.doFilter(servletRequest, servletResponse);
-
-        /*
-        if (!servletRequest.().contains("/api/v1/account/import")) {
-            final JJWTService jjwtService = new JJWTService();
-
-            if (token == null || !jjwtService.parseJWTToken(token)) {
-                response.sendError(HttpServletResponse.SC_UNAUTHORIZED);
-            } else {
-                filterChain.doFilter(req, res);
-            }
-        }*/
     }
 }
