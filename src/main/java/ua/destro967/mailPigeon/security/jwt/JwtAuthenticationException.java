@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 import javax.security.sasl.AuthenticationException;
 
+@ResponseStatus(value=HttpStatus.UNAUTHORIZED, reason="No such Order")  // 404
 public class JwtAuthenticationException extends AuthenticationException {
     public JwtAuthenticationException(String detail) {
         super(detail);

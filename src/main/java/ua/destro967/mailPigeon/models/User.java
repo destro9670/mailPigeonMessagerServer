@@ -34,14 +34,8 @@ public class User extends BaseEntity {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "id")
     private List<Message> messages;
 
-    @ManyToMany(cascade = {
-            CascadeType.PERSIST,
-            CascadeType.MERGE
-    })
-    @JoinTable(name = "users_in_rooms",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "room_id"))
-    private List<Room> rooms;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "id")
+    private List<Room> roms;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "users_has_roles",

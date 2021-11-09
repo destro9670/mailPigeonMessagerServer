@@ -1,0 +1,14 @@
+package ua.destro967.mailPigeon.dto.userList;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class UserListDto {
+    private MessageMinDto message;
+    private RoomMinDto room;
+
+}

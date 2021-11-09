@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 
+
+
 public class CORSFilter implements Filter {
 
     private static final String ONE_HOUR = "3600";
@@ -43,3 +45,4 @@ public class CORSFilter implements Filter {
     }
 
 }
+

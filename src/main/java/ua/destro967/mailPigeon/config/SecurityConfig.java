@@ -10,9 +10,13 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.authentication.HttpStatusEntryPoint;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.web.authentication.logout.LogoutFilter;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import ua.destro967.mailPigeon.filters.FilterChainExceptionHandler;
 import ua.destro967.mailPigeon.security.jwt.JwtConfigurer;
+import ua.destro967.mailPigeon.security.jwt.JwtTokenFilter;
 import ua.destro967.mailPigeon.security.jwt.JwtTokenProvider;
 
 @Configuration
@@ -26,6 +30,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private static final String REGISTER_ENDPOINT = "/api/v1/register";
     private static final String CHECK_AUTH_ENDPOINT = "/api/v1/check-auth";
     private static final String REFRESH_ENDPOINT = "/api/v1/refresh";
+
+    @Autowired
+    private FilterChainExceptionHandler filterChainExceptionHandler;
+    @Autowired
+    private JwtTokenFilter jwtTokenFilter;
 
     @Autowired
     public SecurityConfig(JwtTokenProvider jwtTokenProvider) {
@@ -54,7 +63,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .apply(new JwtConfigurer(jwtTokenProvider))
                 /*.and()
-                .exceptionHandling().authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED))*/
+                .addFilterBefore(filterChainExceptionHandler, JwtTokenFilter.class)*/
+
         ;
     }
 

@@ -5,8 +5,10 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import org.hibernate.annotations.Type;
+import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.UUID;
 
 @Data
@@ -14,7 +16,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @Entity
 @Table(name = "messages")
-public class Message extends BaseEntity {
+public class Message {
     @Id
     @SequenceGenerator(name = "message_seq", sequenceName = "messages_id_seq", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "message_seq")
@@ -23,37 +25,23 @@ public class Message extends BaseEntity {
     @Column(unique = true, name = "uuid", nullable = false)
     private String uuid = UUID.randomUUID().toString().toUpperCase();
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "type", nullable = false)
-    private MessageType typeId;
-
-    @Type(type = "org.hibernate.type.BinaryType")
-    @Column(name = "data", nullable = false)
-    private byte[] data;
+    @Column(name = "text", nullable = false)
+    private String text;
 
     @Column(name = "read_status", nullable = false)
     private boolean isRead;
-
-    @Column(name = "send_status", nullable = false)
-    private boolean isSend;
 
     @ManyToOne
     @JoinColumn(name = "sender_id", nullable = false)
     private User user;
 
-    @OneToOne(cascade = CascadeType.MERGE)
-    @JoinColumn(name = "target_room_id", referencedColumnName = "id")
+    @ManyToOne
+    @JoinColumn(name = "room_id", nullable = false)
     private Room room;
 
-    @Override
-    public String toString() {
-        return "Message{" +
-                "id=" + id +
-                ", typeId=" + typeId +
-                ", isRead=" + isRead +
-                ", isSend=" + isSend +
-                ", user=" + user.getUsername() +
-                ", room=" + room.getName() +
-                '}';
-    }
+    @CreatedDate
+    @Column(name = "created")
+    private Date created;
+
+
 }
