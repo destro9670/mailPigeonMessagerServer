@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import ua.destro967.mailPigeon.dto.AddUser;
 import ua.destro967.mailPigeon.dto.UserDto;
 import ua.destro967.mailPigeon.dto.userList.MessageMinDto;
 import ua.destro967.mailPigeon.dto.userList.RoomMinDto;
@@ -58,12 +59,14 @@ public class UserRestControllerV1 {
         DateFormat dateFormat = new SimpleDateFormat("hh:mm:ss");
 
 
-        UserListDto tmp = new UserListDto();
-        RoomMinDto roomDto = new RoomMinDto();
-        MessageMinDto messageDto = new MessageMinDto();
-        User tmpUser;
+
 
         for (Room room: rooms) {
+            UserListDto tmp = new UserListDto();
+            RoomMinDto roomDto = new RoomMinDto();
+            MessageMinDto messageDto = new MessageMinDto();
+            User tmpUser;
+
             if (room.getUser1() == user){
                 tmpUser = room.getUser2();
             }else{
@@ -73,9 +76,15 @@ public class UserRestControllerV1 {
             roomDto.setUuid(room.getUuid());
 
             Message message = messageService.findTopByRoomOrderByCreatedAsc(room);
-            messageDto.setMessage(message.getText());
-            messageDto.setTime(dateFormat.format(message.getCreated()));
-            messageDto.setStatus(message.isRead() ? "read" : "no" );
+            if (message == null){
+                messageDto.setMessage("");
+                messageDto.setTime("");
+                messageDto.setStatus("");
+            }else {
+                messageDto.setMessage(message.getText());
+                messageDto.setTime(dateFormat.format(message.getCreated()));
+                messageDto.setStatus(message.isRead() ? "read" : "no");
+            }
             tmp.setMessage(messageDto);
             tmp.setRoom(roomDto);
             userListDto.add(tmp);
@@ -85,4 +94,28 @@ public class UserRestControllerV1 {
 
         return new ResponseEntity(userListDto, HttpStatus.OK);
     }
+
+    @PostMapping
+    public ResponseEntity addRoom(@RequestBody AddUser addUser, @RequestHeader("Authorization") String accessToken){
+        accessToken =  accessToken.substring(7);
+        Token token = tokenService.findByAccess(accessToken);
+
+        User mainUser = token.getUser();
+        if (mainUser == null) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+
+        User newUser = userService.findByUsername(addUser.getUsername());
+        if (newUser == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+        Room room = new Room();
+        room.setUser1(mainUser);
+        room.setUser2(newUser);
+        roomService.save(room);
+
+        return new ResponseEntity(HttpStatus.OK);
+    }
+
 }

@@ -16,6 +16,6 @@ public class MessageServiceImpl implements MessageService {
 
     @Override
     public Message findTopByRoomOrderByCreatedAsc(Room room) {
-        return messageRepository.findTopByRoomOrderByCreatedAsc(room);
+        return messageRepository.findTopByRoomIdOrderByCreatedAsc(room.getId());
     }
 }

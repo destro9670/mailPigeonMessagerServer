@@ -158,6 +158,18 @@ public class AuthenticationRestController {
     }
 
 
+    @PostMapping("/logout")
+    public ResponseEntity logOut(HttpServletRequest req){
+        String bearerToken = req.getHeader("Authorization");
+
+        String accessToken = bearerToken.substring(7);
+
+        Token token = tokenService.findByAccess(accessToken);
+        tokenService.delete(token);
+        return ResponseEntity.ok().build();
+    }
+
+
     @PostMapping("/test")
     public ResponseEntity test (){
         Map<Object, Object> response = new HashMap<>();

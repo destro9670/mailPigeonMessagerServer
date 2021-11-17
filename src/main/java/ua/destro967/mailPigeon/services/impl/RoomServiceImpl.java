@@ -19,4 +19,9 @@ public class RoomServiceImpl implements RoomService {
     public List<Room> findByUser1OrUser2(User user){
         return roomRepository.findByUser1OrUser2(user,user);
     }
+
+    @Override
+    public Room save(Room room) {
+        return roomRepository.save(room);
+    }
 }

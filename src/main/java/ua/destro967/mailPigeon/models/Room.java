@@ -17,8 +17,8 @@ import java.util.UUID;
 @Table(name = "rooms")
 public class Room{
     @Id
-    @SequenceGenerator(name = "room_seq", sequenceName = "user_id_seq", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_seq")
+    @SequenceGenerator(name = "room_seq", sequenceName = "rooms_id_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "room_seq")
     private long id;
 
     @Column(unique = true, name = "uuid", nullable = false)

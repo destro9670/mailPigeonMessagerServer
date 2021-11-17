@@ -9,4 +9,5 @@ public interface RoomService {
 
     List<Room> findByUser1OrUser2(User user);
 
+    Room save(Room room);
 }
