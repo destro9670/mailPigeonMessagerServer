@@ -21,6 +21,11 @@ public class RoomServiceImpl implements RoomService {
     }
 
     @Override
+    public Room findByUuid(String uuid) {
+        return roomRepository.findByUuid(uuid);
+    }
+
+    @Override
     public Room save(Room room) {
         return roomRepository.save(room);
     }

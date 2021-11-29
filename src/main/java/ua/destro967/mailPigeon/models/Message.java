@@ -39,7 +39,6 @@ public class Message {
     @JoinColumn(name = "room_id", nullable = false)
     private Room room;
 
-    @CreatedDate
     @Column(name = "created")
     private Date created;
 

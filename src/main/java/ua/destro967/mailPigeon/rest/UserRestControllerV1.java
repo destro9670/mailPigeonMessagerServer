@@ -75,7 +75,7 @@ public class UserRestControllerV1 {
             roomDto.setName(tmpUser.getUsername());
             roomDto.setUuid(room.getUuid());
 
-            Message message = messageService.findTopByRoomOrderByCreatedAsc(room);
+            Message message = messageService.findTopByRoomOrderByCreatedDesc(room);
             if (message == null){
                 messageDto.setMessage("");
                 messageDto.setTime("");
@@ -91,7 +91,7 @@ public class UserRestControllerV1 {
         }
 
         Collections.sort(userListDto, new UserListDtoComparator());
-
+        Collections.reverse(userListDto);
         return new ResponseEntity(userListDto, HttpStatus.OK);
     }
 
@@ -113,9 +113,23 @@ public class UserRestControllerV1 {
         Room room = new Room();
         room.setUser1(mainUser);
         room.setUser2(newUser);
-        roomService.save(room);
+        room = roomService.save(room);
 
-        return new ResponseEntity(HttpStatus.OK);
+        UserListDto tmp = new UserListDto();
+        RoomMinDto roomDto = new RoomMinDto();
+        MessageMinDto messageDto = new MessageMinDto();
+
+        roomDto.setName(newUser.getUsername());
+        roomDto.setUuid(room.getUuid());
+
+        messageDto.setMessage("");
+        messageDto.setTime("");
+        messageDto.setStatus("");
+
+        tmp.setMessage(messageDto);
+        tmp.setRoom(roomDto);
+
+        return ResponseEntity.ok(tmp);
     }
 
 }

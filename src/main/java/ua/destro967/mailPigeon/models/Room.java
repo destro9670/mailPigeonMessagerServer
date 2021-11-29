@@ -35,7 +35,4 @@ public class Room{
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "id")
     private List<Message> messages;
 
-    @CreatedDate
-    @Column(name = "created")
-    private Date created;
 }

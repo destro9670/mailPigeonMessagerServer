@@ -11,6 +11,7 @@ import java.util.List;
 public interface RoomRepository extends JpaRepository<Room, Long> {
 
     List<Room> findByUser1OrUser2(User user1, User user2);
+    Room findByUuid (String uuid);
 
     Room save(Room room);
 }

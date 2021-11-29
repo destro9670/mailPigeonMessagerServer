@@ -9,8 +9,8 @@ create table roles
 (
     id      bigint primary key default nextval('roles_id_seq'),
     name    varchar(20) not null,
-    created timestamp          default current_timestamp,
-    updated timestamp          default current_timestamp
+    created timestamp          default current_timestamp not null ,
+    updated timestamp          default current_timestamp not null
 );
 
 create sequence users_id_seq
@@ -25,10 +25,7 @@ create table users
     username  varchar(20)  not null,
     password  varchar(255) not null,
     is_online bool               default false,
-    last_seen timestamp          default current_timestamp,
-    status    varchar(40)  not null,
-    created   timestamp          default current_timestamp,
-    updated   timestamp          default current_timestamp
+    status    varchar(40)  not null
 );
 
 create sequence tokens_id_seq
@@ -53,9 +50,7 @@ create table users_has_roles
 (
     id      bigint primary key default nextval('users_has_roles_id_seq'),
     user_id bigint references users (id) not null,
-    role_id bigint references roles (id) not null,
-    created timestamp          default current_timestamp,
-    updated timestamp          default current_timestamp
+    role_id bigint references roles (id) not null
 );
 
 create sequence rooms_id_seq
@@ -68,8 +63,7 @@ create table rooms
     id       bigint primary key default nextval('rooms_id_seq'),
     uuid     varchar(255)  default  uuid_generate_v1mc(),
     user1_id bigint references users (id) not null,
-    user2_id bigint references users (id) not null,
-    created  timestamp          default current_timestamp
+    user2_id bigint references users (id) not null
 );
 
 create sequence messages_id_seq
@@ -84,8 +78,8 @@ create table messages
     text           text                                 not null,
     read_status    bool               default false,
     sender_id      bigint references users (id)        not null,
-    room_id bigint unique references rooms (id) not null,
-    created        timestamp          default current_timestamp
+    room_id bigint  references rooms (id) not null,
+    created        timestamp          default current_timestamp not null
 );
 
 create unique index msg_idx on messages (uuid);

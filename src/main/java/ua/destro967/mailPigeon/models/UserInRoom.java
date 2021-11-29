@@ -11,7 +11,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Entity
 @Table(name = "users_in_rooms")
-public class UserInRoom extends BaseEntity {
+public class UserInRoom {
     @Id
     @SequenceGenerator(name = "users_in_rooms_seq", sequenceName = "users_in_rooms_id_seq", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "users_in_rooms_seq")

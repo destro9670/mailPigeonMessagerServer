@@ -7,6 +7,8 @@ import ua.destro967.mailPigeon.models.Room;
 import ua.destro967.mailPigeon.repositories.MessageRepository;
 import ua.destro967.mailPigeon.services.MessageService;
 
+import java.util.List;
+
 @Service
 public class MessageServiceImpl implements MessageService {
 
@@ -15,7 +17,17 @@ public class MessageServiceImpl implements MessageService {
 
 
     @Override
-    public Message findTopByRoomOrderByCreatedAsc(Room room) {
-        return messageRepository.findTopByRoomIdOrderByCreatedAsc(room.getId());
+    public Message findTopByRoomOrderByCreatedDesc(Room room) {
+        return messageRepository.findTopByRoomIdOrderByCreatedDesc(room.getId());
+    }
+
+    @Override
+    public List<Message> findByRoom(Room room) {
+        return messageRepository.findByRoomIdOrderByCreatedAsc(room.getId());
+    }
+
+    @Override
+    public Message save(Message message) {
+        return messageRepository.save(message);
     }
 }

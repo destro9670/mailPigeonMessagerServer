@@ -12,7 +12,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Role extends BaseEntity {
+public class Role {
 
     @Id
     @SequenceGenerator(name = "role_seq", sequenceName = "role_id_seq", allocationSize = 1)
